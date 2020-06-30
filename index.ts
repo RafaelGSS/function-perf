@@ -1,8 +1,8 @@
-import { performance, PerformanceObserver } from 'perf_hooks';
+import { performance, PerformanceObserver, PerformanceEntry } from 'perf_hooks';
 
 export type MeasureOpts = {
   asyncFunction?: boolean,
-  cb: (entry: PerformanceEntry[]) => any;
+  cb?: (entry: PerformanceEntry[]) => any;
 };
 
 const defaultLogResource = (entries: PerformanceEntry[]) => {
@@ -14,7 +14,7 @@ export function Measure(opts?: MeasureOpts): any {
   return function (_target: Object, propertyKey: string, descriptor: PropertyDescriptor): PropertyDescriptor {
     const method = descriptor.value;
     const obs = new PerformanceObserver((list) => {
-      callback(list)
+      callback(list.getEntries());
     });
     obs.observe({ entryTypes: ['measure'] });
 
@@ -41,37 +41,3 @@ export function Measure(opts?: MeasureOpts): any {
     return descriptor;
   }
 }
-
-class Employee {
-  constructor(
-    private firstName: string,
-    private lastName: string,
-    private calls: number = 0,
-  ) {}
-
-  @Measure({ asyncFunction: true })
-  async greet(message: string): Promise<string> {
-    return `${this.firstName} ${this.lastName} says: ${message}`;
-  }
-
-  async greet2(message: string): Promise<string> {
-    return `${this.firstName} ${this.lastName} says: ${message}`;
-  }
-
-}
-
-async function main() {
-  const emp = new Employee('Mohan Ram', 'Ratnakumar');
-
-  console.time('greet')
-  await emp.greet('hello');
-  await emp.greet('hello');
-  console.timeEnd('greet')
-
-  console.time('greet2')
-  await emp.greet2('hello');
-  await emp.greet2('hello');
-  console.timeEnd('greet2')
-}
-
-main()
