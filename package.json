@@ -1,5 +1,5 @@
 {
-  "name": "perf-function",
+  "name": "function-perf",
   "version": "0.0.0",
   "description": "Measure the performance of an function easily",
   "main": "index.js",
