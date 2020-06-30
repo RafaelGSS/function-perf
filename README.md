@@ -12,13 +12,13 @@ or
 command line tools.
 
 ```sh
-npm install perf-function --save
+npm install function-perf --save
 ```
 
 ## Usage
 
 ```ts
-import { Measure } from 'perf-function';
+import { Measure } from 'function-perf';
 
 class Example {
 
