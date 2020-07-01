@@ -1,6 +1,6 @@
 {
   "name": "function-perf",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Measure the performance of an function easily",
   "main": "dist/index.js",
   "scripts": {
