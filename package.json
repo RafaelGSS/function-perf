@@ -2,14 +2,16 @@
   "name": "function-perf",
   "version": "0.0.0",
   "description": "Measure the performance of an function easily",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublish": "tsc",
     "dev": "ts-node index.ts",
     "demo": "ts-node demo.ts"
   },
   "author": "RafaelGSS",
   "license": "MIT",
+  "types": "dist/index.d.ts",
   "repository": {
     "url": "https://github.com/RafaelGSS/perf-function"
   },
