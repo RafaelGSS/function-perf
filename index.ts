@@ -12,14 +12,16 @@ const defaultLogResource = (entries: PerformanceEntry[]) => {
 export function Measure(opts?: MeasureOpts): any {
   const callback = opts?.cb || defaultLogResource;
   return function (_target: Object, propertyKey: string, descriptor: PropertyDescriptor): PropertyDescriptor {
+    let thisFunc: object;
     const method = descriptor.value;
     const obs = new PerformanceObserver((list) => {
-      callback(list.getEntries());
+      callback.apply(thisFunc, [list.getEntries()]);
     });
     obs.observe({ entryTypes: ['measure'] });
 
     if (opts?.asyncFunction) {
       descriptor.value = async function (...args: any[]) {
+        if (!thisFunc) { thisFunc = this; }
         const id = new Date().getTime();
         performance.mark(`${propertyKey}-${id}-start`);
         const result = await method.apply(this, args);
@@ -29,6 +31,7 @@ export function Measure(opts?: MeasureOpts): any {
       }
     } else {
       descriptor.value = function (...args: any[]) {
+        if (!thisFunc) { thisFunc = this; }
         const id = new Date().getTime();
         performance.mark(`${propertyKey}-${id}-start`);
         const result = method.apply(this, args);
