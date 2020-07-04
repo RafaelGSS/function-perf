@@ -16,6 +16,7 @@ export function Measure(opts?: MeasureOpts): any {
     const method = descriptor.value;
     const obs = new PerformanceObserver((list) => {
       callback.apply(thisFunc, [list.getEntries()]);
+      performance.clearMarks();
     });
     obs.observe({ entryTypes: ['measure'] });
 
