@@ -6,7 +6,12 @@ class Employee {
     private lastName: string,
   ) {}
 
-  @Measure({ asyncFunction: true })
+  @Measure({
+    asyncFunction: true,
+    cb: (...args: any) => {
+      debugger;
+    }
+  })
   async greet(message: string): Promise<string> {
     return `${this.firstName} ${this.lastName} says: ${message}`;
   }
