@@ -5,7 +5,8 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "jest",
-    "prepublish": "tsc",
+    "prepublish": "build",
+    "build": "tsc",
     "dev": "ts-node index.ts",
     "demo": "ts-node demo.ts"
   },
