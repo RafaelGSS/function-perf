@@ -1,6 +1,8 @@
 # perf-function
 
-Measure the performance of an function easily
+Measure the performance of an function easily 
+
+![Node.js CI](https://github.com/RafaelGSS/function-perf/workflows/Node.js%20CI/badge.svg?branch=master)
 
 ## Installation
 
