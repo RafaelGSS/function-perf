@@ -1,9 +1,15 @@
 {
   "name": "function-perf",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Measure the performance of an function easily",
-  "main": "dist/mod.js",
-  "type": "module",
+  "author": "RafaelGSS",
+  "license": "MIT",
+  "keywords": [
+    "performance",
+    "measure",
+    "function",
+    "benchmark"
+  ],
   "scripts": {
     "build": "tsc",
     "demo": "node --experimental-transform-types demo.ts",
@@ -11,11 +17,16 @@
     "test": "node --test test/**/*.spec.ts",
     "types:check": "tsc --noEmit"
   },
-  "author": "RafaelGSS",
-  "license": "MIT",
-  "types": "dist/index.d.ts",
+  
+  "type": "module",
+  "types": "dist/mod.d.ts",
+  "main": "dist/mod.js",
+  "files": [
+    "dist"
+  ],
   "repository": {
-    "url": "https://github.com/RafaelGSS/perf-function"
+    "type": "git",
+    "url": "git+https://github.com/RafaelGSS/perf-function.git"
   },
   "devDependencies": {
     "@types/node": "^22.15.15",
