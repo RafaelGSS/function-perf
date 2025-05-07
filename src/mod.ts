@@ -1,4 +1,5 @@
-import { performance, PerformanceObserver, PerformanceEntry } from 'perf_hooks';
+import { performance, PerformanceObserver } from 'node:perf_hooks';
+import type { PerformanceEntry } from 'node:perf_hooks';
 
 export type MeasureOpts = {
   asyncFunction?: boolean,
