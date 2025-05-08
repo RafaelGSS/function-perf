@@ -1,4 +1,4 @@
-# perf-function
+# `perf-function`
 
 Measure the performance of an function easily 
 
@@ -41,8 +41,8 @@ run `demo.ts` to complete usage
 ## Tests
 
 ```sh
-npm install
-npm test
+npm ci
+node --run test
 ```
 
 ## Dependencies
